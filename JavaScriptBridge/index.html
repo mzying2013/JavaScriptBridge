@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>I'm M</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1" charset="utf-8">
+	<script type="text/javascript" charset="utf-8">
+		function nameA(){
+			window.webkit.messageHandlers.nameA.postMessage('我是nameA传递的字符串');
+		}
+		function nameB(){
+			window.webkit.messageHandlers.nameB.postMessage({name:'I\'m 中文'});
+		}
+		function showImage(imagePath,placeholder) {
+			// alert(image)
+			//{'imagePath':'123','placeholder':'DCBA'}
+			var image = document.getElementById("imageID");
+			image.src = imagePath;
+			image.alt = placeholder;
+		}
+	</script>
+</head>
+<body>
+	<h1>It works!</h1>
+	<button type="button" onclick="nameA()">获取图片</button>
+	<button type="button" onclick="nameB()">刷新</button>
+	<p>
+		<img src="" id="imageID" width="256" height="106" alt="图片占位符"/>
+	</p>
+</body>
+</html>
