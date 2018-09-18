@@ -92,9 +92,8 @@ UIWebView * _uiWebView;
             NSLog(@"写入失败");
         }
         
-//        NSString * imageSource = [NSString stringWithFormat:@"data:image/png;base64,%@",[data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn]];
-        
-        NSString * javaScript = [NSString stringWithFormat:@"showImage('%@','%@')",path,@"DCBA"];
+        NSString * imageSource = [NSString stringWithFormat:@"data:image/jpeg;base64,%@",[data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn]];
+        NSString * javaScript = [NSString stringWithFormat:@"showImage({'imagePath':'%@','placeholder':'%@'})",imageSource,@"EDCBA"];
         [message.webView evaluateJavaScript:javaScript
                           completionHandler:^(id _Nullable result, NSError * _Nullable error) {
                               NSLog(@"result:%@ error:%@",result,error);
@@ -105,11 +104,11 @@ UIWebView * _uiWebView;
         if (![message.body isKindOfClass:NSDictionary.class]) {
             return;
         }
-        
 //        NSDictionary * body = message.body;
 //        NSLog(@"%@:%@",message.name,body[@"name"]);
         [message.webView reload];
     }
+    
 }
 
 
